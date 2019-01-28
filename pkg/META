@@ -1,0 +1,7 @@
+description = "Performance Application Programming Interface (PAPI) bindings"
+version = "%%VERSION_NUM%%"
+requires = ""
+archive(byte) = "papi.cma"
+archive(native) = "papi.cmxa"
+plugin(byte) = "papi.cma"
+plugin(native) = "papi.cmxs"
