@@ -1,0 +1,1186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Papi" rel="Chapter" href="Papi.html"><link title="Errors" rel="Section" href="#1_Errors">
+<link title="Initialisation" rel="Section" href="#1_Initialisation">
+<link title="Events" rel="Section" href="#1_Events">
+<link title="Event sets" rel="Section" href="#1_Eventsets">
+<link title="Examples" rel="Section" href="#examples">
+<title>Papi</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Papi.html">Papi</a></h1>
+
+<pre><span id="MODULEPapi"><span class="keyword">module</span> Papi</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Papi.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>Performance Application Programming Interface (PAPI) bindings.</p>
+
+<p>This module binds <code class="code">&lt;papi.h&gt;</code>. PAPI provides portable access to hardware
+    performance counters. For more information, see the
+    <a href=" http://icl.cs.utk.edu/papi/">homepage</a>.</p>
+
+<p><b>Note.</b> All functions in this module except <a href="Papi.html#VALshutdown"><code class="code"><span class="constructor">Papi</span>.shutdown</code></a> raise <a href="Papi.html#EXCEPTIONError"><code class="code"><span class="constructor">Papi</span>.<span class="constructor">Error</span></code></a>
+    whenever the underlying PAPI call signals an error.</p>
+
+<p><b>Note.</b> All functions except <a href="Papi.html#VALinit"><code class="code"><span class="constructor">Papi</span>.init</code></a> and <a href="Papi.html#VALshutdown"><code class="code"><span class="constructor">Papi</span>.shutdown</code></a> raise
+    <code class="code"><span class="constructor">Error</span>&nbsp;(<span class="constructor">ENOINIT</span>,&nbsp;_)</code> before initialisation.</p>
+
+<p>For examples of use, consult <a href="Papi.html#examples">examples</a>.</p>
+
+<p><em>03a7c2e — <a href="https://github.com/pqwy/papi ">homepage</a></em></p>
+</div>
+</div>
+<hr width="100%">
+<h2 id="1_Errors">Errors</h2>
+<pre><code><span id="TYPEerror"><span class="keyword">type</span> <code class="type"></code>error</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EINVAL"><span class="constructor">EINVAL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOMEM"><span class="constructor">ENOMEM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ESYS"><span class="constructor">ESYS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ECMP"><span class="constructor">ECMP</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ECLOST"><span class="constructor">ECLOST</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EBUG"><span class="constructor">EBUG</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOEVNT"><span class="constructor">ENOEVNT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ECNFLCT"><span class="constructor">ECNFLCT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOTRUN"><span class="constructor">ENOTRUN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EISRUN"><span class="constructor">EISRUN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOEVST"><span class="constructor">ENOEVST</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOTPRESET"><span class="constructor">ENOTPRESET</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOCNTR"><span class="constructor">ENOCNTR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EMISC"><span class="constructor">EMISC</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EPERM"><span class="constructor">EPERM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOINIT"><span class="constructor">ENOINIT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOCMP"><span class="constructor">ENOCMP</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOSUPP"><span class="constructor">ENOSUPP</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ENOIMPL"><span class="constructor">ENOIMPL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EBUF"><span class="constructor">EBUF</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EINVAL_DOM"><span class="constructor">EINVAL_DOM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.EATTR"><span class="constructor">EATTR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ECOUNT"><span class="constructor">ECOUNT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTerror.ECOMBO"><span class="constructor">ECOMBO</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>PAPI errors.</p>
+
+<p>See <code class="code">&lt;papi.h&gt;</code> for descriptions of errors.</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+
+
+
+<pre><span id="EXCEPTIONError"><span class="keyword">exception</span> Error</span> <span class="keyword">of</span> <code class="type">(<a href="Papi.html#TYPEerror">error</a> * string)</code></pre>
+<div class="info ">
+<div class="info-desc">
+<p>PAPI errors are signalled by raising <code class="code"><span class="constructor">Error</span>&nbsp;((err,&nbsp;fname))</code>,
+    where <code class="code">fname</code> is the name of the failing function.</p>
+</div>
+</div>
+
+<pre><span id="VALpp_error"><span class="keyword">val</span> pp_error</span> : <code class="type">Stdlib.Format.formatter -> <a href="Papi.html#TYPEerror">error</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">pp_error&nbsp;ppf&nbsp;err</code> pretty-prints <code class="code">err</code> on <code class="code">ppf</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALpp_exn_error"><span class="keyword">val</span> pp_exn_error</span> : <code class="type">Stdlib.Format.formatter -> <a href="Papi.html#TYPEerror">error</a> * string -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">pp_exn_error&nbsp;ppf&nbsp;arg</code> pretty-prints the <code class="code"><span class="constructor">Error</span></code> argument <code class="code">arg</code> on <code class="code">ppf</code>.</p>
+</div>
+</div>
+<h2 id="1_Initialisation">Initialisation</h2>
+<pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">unit -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Initializes PAPI by calling <code class="code"><span class="constructor">PAPI_library_init</span></code>.
+    Idempotent: repeated calls are ignored.</p>
+</div>
+</div>
+
+<pre><span id="VALshutdown"><span class="keyword">val</span> shutdown</span> : <code class="type">unit -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Releases PAPI state by calling <code class="code"><span class="constructor">PAPI_shutdown</span></code>. Idempotent.</p>
+</div>
+</div>
+
+<pre><span id="VALhw_counters"><span class="keyword">val</span> hw_counters</span> : <code class="type">unit -> int</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">hw_counters&nbsp;()</code> is the number of available hardware counters.</p>
+</div>
+</div>
+<h2 id="1_Events">Events</h2>
+<pre><code><span id="TYPEevent"><span class="keyword">type</span> <code class="type"></code>event</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_DCM"><span class="constructor">L1_DCM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_ICM"><span class="constructor">L1_ICM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_DCM"><span class="constructor">L2_DCM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_ICM"><span class="constructor">L2_ICM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_DCM"><span class="constructor">L3_DCM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_ICM"><span class="constructor">L3_ICM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_TCM"><span class="constructor">L1_TCM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_TCM"><span class="constructor">L2_TCM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_TCM"><span class="constructor">L3_TCM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.CA_SNP"><span class="constructor">CA_SNP</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.CA_SHR"><span class="constructor">CA_SHR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.CA_CLN"><span class="constructor">CA_CLN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.CA_INV"><span class="constructor">CA_INV</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.CA_ITV"><span class="constructor">CA_ITV</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_LDM"><span class="constructor">L3_LDM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_STM"><span class="constructor">L3_STM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.BRU_IDL"><span class="constructor">BRU_IDL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.FXU_IDL"><span class="constructor">FXU_IDL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.FPU_IDL"><span class="constructor">FPU_IDL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.LSU_IDL"><span class="constructor">LSU_IDL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.TLB_DM"><span class="constructor">TLB_DM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.TLB_IM"><span class="constructor">TLB_IM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.TLB_TL"><span class="constructor">TLB_TL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_LDM"><span class="constructor">L1_LDM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_STM"><span class="constructor">L1_STM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_LDM"><span class="constructor">L2_LDM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_STM"><span class="constructor">L2_STM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.BTAC_M"><span class="constructor">BTAC_M</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.PRF_DM"><span class="constructor">PRF_DM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_DCH"><span class="constructor">L3_DCH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.TLB_SD"><span class="constructor">TLB_SD</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.CSR_FAL"><span class="constructor">CSR_FAL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.CSR_SUC"><span class="constructor">CSR_SUC</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.CSR_TOT"><span class="constructor">CSR_TOT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.MEM_SCY"><span class="constructor">MEM_SCY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.MEM_RCY"><span class="constructor">MEM_RCY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.MEM_WCY"><span class="constructor">MEM_WCY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.STL_ICY"><span class="constructor">STL_ICY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.FUL_ICY"><span class="constructor">FUL_ICY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.STL_CCY"><span class="constructor">STL_CCY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.FUL_CCY"><span class="constructor">FUL_CCY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.HW_INT"><span class="constructor">HW_INT</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.BR_UCN"><span class="constructor">BR_UCN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.BR_CN"><span class="constructor">BR_CN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.BR_TKN"><span class="constructor">BR_TKN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.BR_NTK"><span class="constructor">BR_NTK</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.BR_MSP"><span class="constructor">BR_MSP</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.BR_PRC"><span class="constructor">BR_PRC</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.FMA_INS"><span class="constructor">FMA_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.TOT_IIS"><span class="constructor">TOT_IIS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.TOT_INS"><span class="constructor">TOT_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.INT_INS"><span class="constructor">INT_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.FP_INS"><span class="constructor">FP_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.LD_INS"><span class="constructor">LD_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.SR_INS"><span class="constructor">SR_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.BR_INS"><span class="constructor">BR_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.VEC_INS"><span class="constructor">VEC_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.RES_STL"><span class="constructor">RES_STL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.FP_STAL"><span class="constructor">FP_STAL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.TOT_CYC"><span class="constructor">TOT_CYC</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.LST_INS"><span class="constructor">LST_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.SYC_INS"><span class="constructor">SYC_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_DCH"><span class="constructor">L1_DCH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_DCH"><span class="constructor">L2_DCH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_DCA"><span class="constructor">L1_DCA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_DCA"><span class="constructor">L2_DCA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_DCA"><span class="constructor">L3_DCA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_DCR"><span class="constructor">L1_DCR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_DCR"><span class="constructor">L2_DCR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_DCR"><span class="constructor">L3_DCR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_DCW"><span class="constructor">L1_DCW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_DCW"><span class="constructor">L2_DCW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_DCW"><span class="constructor">L3_DCW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_ICH"><span class="constructor">L1_ICH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_ICH"><span class="constructor">L2_ICH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_ICH"><span class="constructor">L3_ICH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_ICA"><span class="constructor">L1_ICA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_ICA"><span class="constructor">L2_ICA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_ICA"><span class="constructor">L3_ICA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_ICR"><span class="constructor">L1_ICR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_ICR"><span class="constructor">L2_ICR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_ICR"><span class="constructor">L3_ICR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_ICW"><span class="constructor">L1_ICW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_ICW"><span class="constructor">L2_ICW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_ICW"><span class="constructor">L3_ICW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_TCH"><span class="constructor">L1_TCH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_TCH"><span class="constructor">L2_TCH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_TCH"><span class="constructor">L3_TCH</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_TCA"><span class="constructor">L1_TCA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_TCA"><span class="constructor">L2_TCA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_TCA"><span class="constructor">L3_TCA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_TCR"><span class="constructor">L1_TCR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_TCR"><span class="constructor">L2_TCR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_TCR"><span class="constructor">L3_TCR</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L1_TCW"><span class="constructor">L1_TCW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L2_TCW"><span class="constructor">L2_TCW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.L3_TCW"><span class="constructor">L3_TCW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.FML_INS"><span class="constructor">FML_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.FAD_INS"><span class="constructor">FAD_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.FDV_INS"><span class="constructor">FDV_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.FSQ_INS"><span class="constructor">FSQ_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.FNV_INS"><span class="constructor">FNV_INS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.FP_OPS"><span class="constructor">FP_OPS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.SP_OPS"><span class="constructor">SP_OPS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.DP_OPS"><span class="constructor">DP_OPS</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.VEC_SP"><span class="constructor">VEC_SP</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.VEC_DP"><span class="constructor">VEC_DP</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTevent.REF_CYC"><span class="constructor">REF_CYC</span></span></code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>PAPI <code class="code"><span class="constructor">PRESET</span></code> events.</p>
+
+<p>See <code class="code">&lt;papiStdEventDefs.h&gt;</code> for descriptions of events.</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+
+
+
+<pre><span id="VALname"><span class="keyword">val</span> name</span> : <code class="type"><a href="Papi.html#TYPEevent">event</a> -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">name&nbsp;e</code> is a human-readable name for <code class="code">e</code>.</p>
+
+<p>It returns <code class="code"><span class="constructor">PAPI_event_info_t</span>.name</code>, without the prefix <code class="code"><span class="string">"PAPI_"</span></code>.</p>
+</div>
+</div>
+
+<pre><span id="VALdescription"><span class="keyword">val</span> description</span> : <code class="type"><a href="Papi.html#TYPEevent">event</a> -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">description&nbsp;e</code> is a human-readable description of <code class="code">e</code>.</p>
+
+<p>It returns <code class="code"><span class="constructor">PAPI_event_info_t</span>.long_descr</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALquery"><span class="keyword">val</span> query</span> : <code class="type"><a href="Papi.html#TYPEevent">event</a> -> bool</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">query&nbsp;e</code> is <code class="code"><span class="keyword">true</span></code> iff the hardware supports the event <code class="code">e</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALevents"><span class="keyword">val</span> events</span> : <code class="type"><a href="Papi.html#TYPEevent">event</a> array</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">events</code> contains all defined <a href="Papi.html#TYPEevent">events</a>.</p>
+</div>
+</div>
+<h2 id="1_Eventsets">Event sets</h2>
+<pre><span id="TYPEeventset"><span class="keyword">type</span> <code class="type"></code>eventset</span> </pre>
+<div class="info ">
+<div class="info-desc">
+<p>Sets of events.</p>
+
+<p><b>Note.</b> Eventsets are handles to resources held by PAPI. The handles are
+    recycled. Calls to <a href="Papi.html#VALdestroy"><code class="code"><span class="constructor">Papi</span>.destroy</code></a> followed by <a href="Papi.html#VALcreate"><code class="code"><span class="constructor">Papi</span>.create</code></a> can therefore return
+    handles identical to previously destroyed handles, making destroyed
+    eventsets <em>live</em> again.</p>
+</div>
+</div>
+
+
+<pre><span id="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">unit -> <a href="Papi.html#TYPEeventset">eventset</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">create&nbsp;()</code> is a new <a href="Papi.html#TYPEeventset"><code class="code"><span class="constructor">Papi</span>.eventset</code></a> <code class="code">es</code>.</p>
+
+<p>Calls <code class="code"><span class="constructor">PAPI_create_eventset</span></code>.</p>
+</div>
+</div>
+
+<pre><span id="VALcleanup"><span class="keyword">val</span> cleanup</span> : <code class="type"><a href="Papi.html#TYPEeventset">eventset</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">cleanup&nbsp;es</code> removes counters from <code class="code">es</code>.</p>
+
+<p>Calls <code class="code"><span class="constructor">PAPI_cleanup_eventset</span></code>.</p>
+</div>
+</div>
+
+<pre><span id="VALdestroy"><span class="keyword">val</span> destroy</span> : <code class="type"><a href="Papi.html#TYPEeventset">eventset</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">destroy&nbsp;es</code> releases the resources backing <code class="code">es</code>.</p>
+
+<p>Calls <code class="code"><span class="constructor">PAPI_destroy_eventset</span></code>.</p>
+</div>
+</div>
+
+<pre><span id="VALadd"><span class="keyword">val</span> add</span> : <code class="type"><a href="Papi.html#TYPEeventset">eventset</a> -> <a href="Papi.html#TYPEevent">event</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">add&nbsp;es&nbsp;e</code> adds the event <code class="code">e</code> to <code class="code">es</code>.</p>
+
+<p>Calls <code class="code"><span class="constructor">PAPI_add_event</span></code>.</p>
+</div>
+</div>
+
+<pre><span id="VALnum_events"><span class="keyword">val</span> num_events</span> : <code class="type"><a href="Papi.html#TYPEeventset">eventset</a> -> int</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">num_events&nbsp;es</code> is the number of <a href="Papi.html#TYPEevent">events</a> currently attached to
+    <code class="code">es</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALstart"><span class="keyword">val</span> start</span> : <code class="type"><a href="Papi.html#TYPEeventset">eventset</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">start&nbsp;es</code> starts counting the events in <code class="code">es</code>.</p>
+
+<p>Calls <code class="code"><span class="constructor">PAPI_start</span></code>.</p>
+</div>
+</div>
+
+<pre><span id="VALstop"><span class="keyword">val</span> stop</span> : <code class="type"><a href="Papi.html#TYPEeventset">eventset</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">stop&nbsp;es</code> stops counting the events in <code class="code">es</code>.</p>
+
+<p>Calls <code class="code"><span class="constructor">PAPI_stop</span></code>.</p>
+</div>
+</div>
+
+<pre><span id="VALreset"><span class="keyword">val</span> reset</span> : <code class="type"><a href="Papi.html#TYPEeventset">eventset</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">reset&nbsp;es</code> resets the counters of events in <code class="code">es</code>.</p>
+
+<p>Calls <code class="code"><span class="constructor">PAPI_reset</span></code>.</p>
+</div>
+</div>
+
+<pre><span id="VALread"><span class="keyword">val</span> read</span> : <code class="type"><a href="Papi.html#TYPEeventset">eventset</a> -> ?off:int -> float array -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">read&nbsp;es&nbsp;~off&nbsp;values</code> <code class="code">es</code>' event counters to <code class="code">values</code>.</p>
+
+<p>These values are written to <code class="code">values.(off),&nbsp;...,&nbsp;values.(off&nbsp;+&nbsp;n&nbsp;-&nbsp;1)</code> where
+    <code class="code">n</code> is <code class="code">num_events&nbsp;es</code>. <code class="code">off</code> defaults to <code class="code">0</code>.</p>
+
+<p>Calls <code class="code"><span class="constructor">PAPI_read</span></code>.</p>
+</div>
+</div>
+
+<pre><span id="VALaccum"><span class="keyword">val</span> accum</span> : <code class="type"><a href="Papi.html#TYPEeventset">eventset</a> -> ?off:int -> float array -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">accum&nbsp;es&nbsp;~off&nbsp;values</code> adds <code class="code">es</code>' event counters to <code class="code">values</code> and resets
+    them.</p>
+
+<p>These values are written to <code class="code">values.(off),&nbsp;...,&nbsp;values.(off&nbsp;+&nbsp;n&nbsp;-&nbsp;1)</code> where
+    <code class="code">n</code> is <code class="code">num_events&nbsp;es</code>. <code class="code">off</code> defaults to <code class="code">0</code>.</p>
+
+<p>Calls <code class="code"><span class="constructor">PAPI_accum</span></code>.</p>
+</div>
+</div>
+<h2 id="examples">Examples</h2>
+<p>Read the TSC and the actual number of cycles:</p>
+<pre class="codepre"><code class="code"><span class="keyword">open</span> <span class="constructor">Papi</span>
+
+<span class="keyword">let</span> _ = init ()
+<span class="keyword">let</span> _ =
+  <span class="keyword">let</span> es = create ()
+  <span class="keyword">and</span> vs = <span class="constructor">Array</span>.create_float 2 <span class="keyword">in</span>
+  <span class="constructor">List</span>.iter (add es) [<span class="constructor">REF_CYC</span>; <span class="constructor">TOT_CYC</span>];
+  start es;
+  long_running_fun ();
+  read es vs;
+  stop es; cleanup es; destroy es;
+  <span class="constructor">Fmt</span>.pr <span class="string">"reference: %f, total: %f\n"</span> vs.(0) vs.(1)
+</code></pre>
+<p>Create bracket that reads a set of events:</p>
+
+<pre class="codepre"><code class="code"><span class="keyword">open</span> <span class="constructor">Papi</span>
+
+<span class="keyword">let</span> _ = init ()
+<span class="keyword">let</span> count_events ~events f =
+  <span class="keyword">let</span> es = create ()
+  <span class="keyword">and</span> vs = <span class="constructor">Array</span>.create_float (<span class="constructor">List</span>.length events) <span class="keyword">in</span>
+  <span class="constructor">List</span>.iter (add es) events;
+  start es;
+  <span class="keyword">let</span> res = f () <span class="keyword">in</span>
+  read es vs;
+  stop es; cleanup es; destroy es;
+  (res, vs)
+</code></pre></body></html>
