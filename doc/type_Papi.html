@@ -154,6 +154,7 @@
 &nbsp;&nbsp;<span class="keyword">external</span>&nbsp;name&nbsp;:&nbsp;<span class="constructor">Papi</span>.event&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;=&nbsp;<span class="string">"caml_papi_event_name"</span><br>
 &nbsp;&nbsp;<span class="keyword">external</span>&nbsp;description&nbsp;:&nbsp;<span class="constructor">Papi</span>.event&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;=&nbsp;<span class="string">"caml_papi_event_descr"</span><br>
 &nbsp;&nbsp;<span class="keyword">external</span>&nbsp;query&nbsp;:&nbsp;<span class="constructor">Papi</span>.event&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool&nbsp;=&nbsp;<span class="string">"caml_papi_query_event"</span><br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;pp_event&nbsp;:&nbsp;<span class="constructor">Stdlib</span>.<span class="constructor">Format</span>.formatter&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Papi</span>.event&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;events&nbsp;:&nbsp;<span class="constructor">Papi</span>.event&nbsp;array<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;eventset<br>
 &nbsp;&nbsp;<span class="keyword">external</span>&nbsp;create&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Papi</span>.eventset&nbsp;=&nbsp;<span class="string">"caml_papi_create_eventset"</span><br>

@@ -38,7 +38,7 @@
 
 <p>For examples of use, consult <a href="Papi.html#examples">examples</a>.</p>
 
-<p><em>f610a06 — <a href="https://github.com/pqwy/ocaml-papi ">homepage</a></em></p>
+<p><em>v0.1.0 — <a href="https://github.com/pqwy/ocaml-papi ">homepage</a></em></p>
 </div>
 </div>
 <hr width="100%">
@@ -214,7 +214,7 @@
 <div class="info-desc">
 <p>PAPI errors.</p>
 
-<p>See <code class="code">&lt;papi.h&gt;</code> for descriptions of errors.</p>
+<p>See the header file <code class="code">papi.h</code> for descriptions of errors.</p>
 </div>
 </div>
 </td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
@@ -1020,7 +1020,11 @@
 <div class="info-desc">
 <p>PAPI <code class="code"><span class="constructor">PRESET</span></code> events.</p>
 
-<p>See <code class="code">&lt;papiStdEventDefs.h&gt;</code> for descriptions of events.</p>
+<p>The header file <code class="code">papiStdEventDefs.h</code>, installed by PAPI, is the
+    authoritative description of events.</p>
+
+<p>Another way to obtain event descriptions is to call <a href="Papi.html#VALdescription"><code class="code"><span class="constructor">Papi</span>.description</code></a>, or
+    pretty-print them with <a href="Papi.html#VALpp_event"><code class="code"><span class="constructor">Papi</span>.pp_event</code></a>.</p>
 </div>
 </div>
 </td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
@@ -1047,6 +1051,12 @@
 <pre><span id="VALquery"><span class="keyword">val</span> query</span> : <code class="type"><a href="Papi.html#TYPEevent">event</a> -> bool</code></pre><div class="info ">
 <div class="info-desc">
 <p><code class="code">query&nbsp;e</code> is <code class="code"><span class="keyword">true</span></code> iff the hardware supports the event <code class="code">e</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALpp_event"><span class="keyword">val</span> pp_event</span> : <code class="type">Stdlib.Format.formatter -> <a href="Papi.html#TYPEevent">event</a> -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">pp_event&nbsp;ppf&nbsp;e</code> pretty-prints a human-readable description on <code class="code">e</code> on <code class="code">ppf</code>.</p>
 </div>
 </div>
 
