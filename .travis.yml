@@ -1,0 +1,17 @@
+dist: xenial
+sudo: false
+language: c
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y libpapi5.4 libpapi-dev
+install: wget https://raw.githubusercontent.com/ocaml/ocaml-ci-scripts/master/.travis-opam.sh
+script: bash -ex .travis-opam.sh
+env:
+  global:
+    - PACKAGE="papi"
+  matrix:
+    - OCAML_VERSION=4.05
+    - OCAML_VERSION=4.06
+    - OCAML_VERSION=4.07
+notifications:
+  email: false

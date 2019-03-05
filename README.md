@@ -10,7 +10,7 @@ The bindings closely follow PAPI's [own interface][papi-docs]. As a consequence,
 the multitude of errors that PAPI can signal are propagated to OCaml. User is
 advised to at least skim the PAPI documentation.
 
-Papi depends on the PAPI C library.
+Papi depends on the PAPI C library, version 5.4 or above.
 
 Papi is distributed under the ISC license.
 
@@ -24,3 +24,6 @@ Homepage: https://github.com/pqwy/ocaml-papi
 Interface files or [online][doc].
 
 [doc]: https://pqwy.github.io/ocaml-papi/doc
+
+
+[![Build Status](https://travis-ci.org/pqwy/ocaml-papi.svg?branch=master)](https://travis-ci.org/pqwy/ocaml-papi)
