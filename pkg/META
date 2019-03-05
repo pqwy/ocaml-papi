@@ -5,3 +5,13 @@ archive(byte) = "papi.cma"
 archive(native) = "papi.cmxa"
 plugin(byte) = "papi.cma"
 plugin(native) = "papi.cmxs"
+
+package "top" (
+ version = "%%VERSION_NUM%%"
+ description = "PAPI toplevel support"
+ requires = "papi"
+ archive(byte) = "papi_top.cma"
+ archive(native) = "papi_top.cmxa"
+ plugin(byte) = "papi_top.cma"
+ plugin(native) = "papi_top.cmxs"
+)

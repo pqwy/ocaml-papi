@@ -2,16 +2,17 @@
 
 %%VERSION%%
 
-papi is a binding for PAPI, the
-[Performance Application Programming Interface][papi-home].
-It gives access to hardware performance counters in a way that is portable
-across architectures and operating systems.
+Papi provides OCaml bindings to
+[PAPI (Performance Application Programming Interface)][papi-home], a C library
+for portable access to hardware performance counters.
 
 The bindings closely follow PAPI's [own interface][papi-docs]. As a consequence,
 the multitude of errors that PAPI can signal are propagated to OCaml. User is
 advised to at least skim the PAPI documentation.
 
-papi is distributed under the ISC license.
+Papi depends on the PAPI C library.
+
+Papi is distributed under the ISC license.
 
 Homepage: https://github.com/pqwy/ocaml-papi
 

@@ -26,7 +26,7 @@ type error =
 | ENOSUPP | ENOIMPL | EBUF | EINVAL_DOM | EATTR | ECOUNT | ECOMBO
 (** PAPI errors.
 
-    See [<papi.h>] for descriptions of errors. *)
+    See the header file [papi.h] for descriptions of errors. *)
 
 exception Error of (error * string)
 (** PAPI errors are signalled by raising [Error ((err, fname))],
@@ -71,7 +71,11 @@ type event =
 | SP_OPS | DP_OPS | VEC_SP | VEC_DP | REF_CYC
 (** PAPI [PRESET] events.
 
-    See [<papiStdEventDefs.h>] for descriptions of events. *)
+    The header file [papiStdEventDefs.h], installed by PAPI, is the
+    authoritative description of events.
+
+    Another way to obtain event descriptions is to call {!description}, or
+    pretty-print them with {!pp_event}. *)
 
 external name : event -> string = "caml_papi_event_name"
 (** [name e] is a human-readable name for [e].
@@ -86,9 +90,11 @@ external description : event -> string = "caml_papi_event_descr"
 external query : event -> bool = "caml_papi_query_event"
 (** [query e] is [true] iff the hardware supports the event [e]. *)
 
+val pp_event : Format.formatter -> event -> unit
+(** [pp_event ppf e] pretty-prints a human-readable description on [e] on [ppf]. *)
+
 val events : event array
 (** [events] contains all defined {{!event}events}. *)
-
 
 (** {1 Event sets} *)
 

@@ -63,6 +63,7 @@ external description : event -> string = "caml_papi_event_descr"
 
 let pf = Format.fprintf
 (* let pp_eventset ppf = pf ppf "%d" *)
+let pp_event ppf e = pf ppf "@[%s@ (%s)@]" (name e) (description e)
 let pp_error ppf err =
   let descr = try strerror err with
     Error (ENOINIT, _) -> "Please call Papi.init" in
