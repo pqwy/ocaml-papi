@@ -1,3 +1,3 @@
-## vX.Y.Z YYYY-MM-DD Location
+## v0.1.0 2019-03-05
 
 First release.
