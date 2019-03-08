@@ -23,7 +23,7 @@ Homepage: https://github.com/pqwy/ocaml-papi
 
 Interface files or [online][doc].
 
-[doc]: https://pqwy.github.io/ocaml-papi/doc
+[doc]: https://pqwy.github.io/ocaml-papi/doc/papi/
 
 
 [![Build Status](https://travis-ci.org/pqwy/ocaml-papi.svg?branch=master)](https://travis-ci.org/pqwy/ocaml-papi)

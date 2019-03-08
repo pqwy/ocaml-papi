@@ -3,6 +3,8 @@ _build
 *.native
 *.byte
 
+.merlin
+
 tmp
 *~
 \.\#*

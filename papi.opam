@@ -7,11 +7,16 @@ doc:          "https://pqwy.github.io/ocaml-papi/doc"
 dev-repo:     "git+https://github.com/pqwy/ocaml-papi.git"
 bug-reports:  "https://github.com/pqwy/ocaml-papi/issues"
 synopsis:     "Performance Application Programming Interface (PAPI) bindings"
+
+build: [ [ "dune" "subst" ] {pinned}
+         [ "dune" "build" "-p" name "-j" jobs ]
+         [ "dune" "runtest" ] {with-test} ]
+
 depends: [
   "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "ocb-stubblr" {build}
+  "dune" {build & >= "1.7"}
   "fmt" {with-test} ]
-build: [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" ]
-depopts: []
+description: """
+Papi provides OCaml bindings to PAPI, a C library for portable access to
+hardware performance counters.
+"""
