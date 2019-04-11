@@ -10,17 +10,17 @@ synopsis:     "Performance Application Programming Interface (PAPI) bindings"
 
 build: [ [ "dune" "subst" ] {pinned}
          [ "dune" "build" "-p" name "-j" jobs ]
-         [ "dune" "runtest" ] {with-test} ]
+         [ "dune" "runtest" "-p" name "-j" jobs ] {with-test} ]
 
 depends: [
-  "ocamlfind" {build}
   "dune" {build & >= "1.7"}
   "fmt" {with-test} ]
 
 depexts: [
   ["libpapi-dev"] {os-distribution = "debian"}
   ["libpapi-dev"] {os-distribution = "ubuntu"}
-  ["papi"] {os-distribution = "archlinux"}
+  ["papi-devel"] {os-distribution = "centos"}
+  ["papi"] {os-distribution = "arch"}
 ]
 
 description: """
