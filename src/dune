@@ -13,6 +13,7 @@
   (synopsis "PAPI toplevel support")
   (name papi_top)
   (modules papi_top)
+  (preprocess (action (run %{bin:cppo} -V OCAML:%{ocaml_version} %{input-file})))
   (libraries papi compiler-libs.toplevel))
 
 (install
