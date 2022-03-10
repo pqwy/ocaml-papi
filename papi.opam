@@ -8,13 +8,15 @@ dev-repo:     "git+https://github.com/pqwy/ocaml-papi.git"
 bug-reports:  "https://github.com/pqwy/ocaml-papi/issues"
 synopsis:     "Performance Application Programming Interface (PAPI) bindings"
 
-build: [ [ "dune" "subst" ] {pinned}
+build: [ [ "dune" "subst" ] {dev}
          [ "dune" "build" "-p" name "-j" jobs ]
          [ "dune" "runtest" "-p" name "-j" jobs ] {with-test} ]
 
 depends: [
-  "dune" {build & >= "1.7"}
-  "fmt" {with-test} ]
+  "ocaml" {>= "4.14"}
+  "dune" {>= "1.7"}
+  "fmt" {with-test}
+]
 
 depexts: [
   ["libpapi-dev"] {os-distribution = "debian"}
