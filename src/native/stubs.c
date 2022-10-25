@@ -78,11 +78,8 @@ __attribute__ ((__noreturn__))
 static void __raise_papi (int err, const char *f) {
   CAMLparam0();
   CAMLlocal1(arg);
-  static value *exn = NULL;
-  if (!exn) {
-    exn = caml_named_value ("PAPI_EXCEPTION_CTOR");
-    if (!exn) exit (1);
-  }
+  const value *exn = caml_named_value ("PAPI_EXCEPTION_CTOR");
+  if (!exn) exit (1);
   arg = caml_alloc_tuple (2);
   Field (arg, 0) = __ml_error_of_error (err);
   Field (arg, 1) = caml_copy_string (f);

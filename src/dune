@@ -3,7 +3,7 @@
   (synopsis "Performance Application Programming Interface (PAPI) bindings")
   (modules papi)
   (c_names stubs)
-  (c_flags (-Wall -Wextra -O3 -Wno-implicit-fallthrough))
+  (c_flags (-Wall -Wextra -O3 -Wno-implicit-fallthrough -Wno-unused-variable))
   (c_library_flags (-lpapi)))
 
 (include_subdirs unqualified)

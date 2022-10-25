@@ -1,3 +1,0 @@
-#directory "_build/src"
-#load "papi.cma"
-#use "src/papi_top_init.ml"
